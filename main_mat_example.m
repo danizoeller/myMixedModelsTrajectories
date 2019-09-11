@@ -29,7 +29,7 @@ input.subjID=within_subj; % subject IDs
 input.age=age; % age
 input.grouping=diagnosis; % group (male/female, control/patients, ...)
 input.data=lh_thickness; % data to fit (thickness, volume, behavior, ...)
-input.cov=sex'; % model covariates (here, only sex is included as covariate)
+input.cov=sex; % model covariates (here, only sex is included as covariate)
 
 % -----------------------------
 % model estimation options
