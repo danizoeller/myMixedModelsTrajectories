@@ -1,4 +1,4 @@
-# Trajectory fitting using mixed models regression
+# myMixedModelsTrajectories: Trajectory fitting using mixed models regression
 Mixed effect model toolbox for the analysis of longitudinal data
 
 This toolbox allows to fit models of different orders (from constant to cubic models) to data with repeated measurements. The original purpose was to the estimation of developmental curves over age, in a sample mixed sample, where subjects were recorded at different ages and at multiple time points. Aside from determining the best model (no age-relationship, linear age-relationship, quadratic age-relationship or cubic age-relationship), the toolbox allows to estimate the difference in development between multiple groups.
