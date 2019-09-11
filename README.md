@@ -21,7 +21,7 @@ Example applications, which used this toolbox:
 
 # Installation & Use
 1. Clone or download this directory
-2. Have a look at the two example main scripts, follow the comments and adapt the script for your purpose
+2. Have a look at the three example main scripts, follow the comments and adapt the script for your purpose
 
 
 # Credits
