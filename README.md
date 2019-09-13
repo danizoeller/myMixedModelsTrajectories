@@ -24,7 +24,7 @@ Example applications, which used this toolbox:
 2. Have a look at the three example main scripts, follow the comments and adapt the script for your purpose
 
 ### Note on the grouping information
-The toolbox allows works on a single group, or multiple groups. Resulting p-values indicate whether a model with multiple groups is significantly better than assuming no grouping information. If you want to compare developmental curves between two out of many groups, you need to run the algorithm for subjects of only these two groups.
+The toolbox allows works on a single group, or multiple groups. Resulting p-values indicate whether a model with multiple groups is significantly better than assuming no grouping information. If you want to get a p-value for the developmental difference between two out of many groups, you need to run the algorithm separately for subjects of only these two groups.
 
 ### Correction for multiple comparisons
 By default, the example scripts correct for multiple comparisons using the False Discovery Rate. If you do not want to correct within the toolbox, please remove the respective line from the script.
