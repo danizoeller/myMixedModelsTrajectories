@@ -80,7 +80,7 @@ for iM = 1:nModels
     end
     dataID=~isnan(dataVect);
     
-    if ~any(dataVect)
+    if ~any(dataVect) %
         if isfield(opts,'modelNames')
             outModelVect{iM,1}.mName = opts.modelNames{iM};
         else
@@ -106,7 +106,7 @@ for iM = 1:nModels
         if iO==1
             outModelVect{iM,1}=tmpModel; % save constant model
         elseif tmpModel.stats.bic < outModelVect{iM}.stats.bic-2
-            outModelVect{iM,1}=tmpModel; % keep higher order model if BIC decreases
+          outModelVect{iM,1}=tmpModel; % keep higher order model if BIC decreases
         else
             break; % if bic does not decrease sufficiently enough, stop increasing model order (not necessary to compute higher order models)
         end
@@ -163,4 +163,40 @@ end
 end
 
 
+%  if size(input.grouping,2)==2 % if there are 3 groups
+%         %% likelihood ratio test for significant group effect 
+%         estOpts.group1Effect=0;
+%         estOpts.mOrder=outModelVect{iM}.order;
+%         estOpts.mType=opts.mType;
+%         if ~isempty(input.cov)
+%             reducedModel = estimateModel(input.subjID(dataID,:), input.grouping(dataID,:),...
+%                 input.age(dataID,:), input.cov(dataID,:), dataVect(dataID,:), estOpts);
+%         else
+%             reducedModel = estimateModel(input.subjID(dataID,:), input.grouping(dataID,:),...
+%                 input.age(dataID,:), [], dataVect(dataID,:), estOpts);
+%         end
+% 
+%         % degrees of freedom of the chi-squared distribution for the likelihood ratio test is de difference dofs of every model
+%         dof = length(outModelVect{iM}.beta)-length(reducedModel.beta);
+%         [outModelVect{iM}.groupEffect.h outModelVect{iM}.groupEffect.p outModelVect{iM}.groupEffect.dof_diff outModelVect{iM}.groupEffect.Chi2] = likelihoodratiotest(outModelVect{iM}.stats.logl, reducedModel.stats.logl, dof, opts.alpha);
+%         outModelVect{iM}.groupEffect.reducedModel = reducedModel;
+%     
+%         %% likelihood ratio test for significant age*group interaction
+%         if outModelVect{iM}.order
+%             estOpts.groupEffect=1;
+%             estOpts.interEffect=0;
+%             estOpts.mOrder=outModelVect{iM}.order;
+%             estOpts.mType=opts.mType;
+%             if ~isempty(input.cov)
+%                 reducedModel = estimateModel(input.subjID(dataID,:), input.grouping(dataID,:),...
+%                     input.age(dataID,:), input.cov(dataID,:), dataVect(dataID,:), estOpts);
+%             else
+%                 reducedModel = estimateModel(input.subjID(dataID,:), input.grouping(dataID,:),...
+%                     input.age(dataID,:), [], dataVect(dataID,:), estOpts);
+%             end
+%             dof = length(outModelVect{iM}.beta)-length(reducedModel.beta);
+%             [outModelVect{iM}.interEffect.h outModelVect{iM}.interEffect.p outModelVect{iM}.interEffect.dof_diff outModelVect{iM}.interEffect.Chi2] = likelihoodratiotest(outModelVect{iM}.stats.logl, reducedModel.stats.logl, dof, opts.alpha);
+%             outModelVect{iM}.interEffect.reducedModel = reducedModel;
+%         end
+%     end
 
