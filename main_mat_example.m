@@ -27,7 +27,11 @@ load(inputDataFile);
 
 input.subjID=within_subj; % subject IDs
 input.age=age; % age
-input.grouping=diagnosis; % group (male/female, control/patients, ...)
+input.grouping=diagnosis;% column (with 0 and 1 values) you want to use for grouping: $
+                          % input.grouping=[]; if you have only 1 group
+                          % 1 column if you have 2 groups
+                          % 2 colums if you have 3 groups (in the first column  you have 1 for everyone in the group 1 and 0 everywhere else,
+                          % and in the second column you have 1 for everyone is in the group 2 and 0 everywhere else)             
 input.data=lh_thickness; % data to fit (thickness, volume, behavior, ...)
 input.cov=sex; % model covariates (here, only sex is included as covariate)
 
@@ -85,3 +89,15 @@ outModelVect_corr = fdr_correct(outModelVect,opts.alpha);
 % -----------------------------
 plotOpts.nCov=size(input.cov,2);
 plotModelsAndSaveResults(outModelVect_corr,plotOpts,saveResults,outDir);
+
+% -----------------------------
+% calculation of the size effect
+% -----------------------------
+% Reporting the effect size for the groups and for the interaction between groups and age
+
+effectSizeGroup=GroupCalculationEffect(outModelVect);
+%table reporting the group (if variable group is included) size effect for each model (each response variable)
+effectSizeInter=InterCalculationEffect(outModelVect);
+%table reporting the interaction (if variable interaction is included) size effect for each model (each response variable)
+
+
