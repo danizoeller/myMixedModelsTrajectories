@@ -38,8 +38,6 @@ else
     fh = figurehandle;
 end
 
-nCov = length(model.beta)-2*(model.order+1);
-
 %% residuals
 pred=model.designMatrix*model.beta;
 residuals = pred - model.input.data;

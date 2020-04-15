@@ -80,7 +80,7 @@ for iM = 1:nModels
     end
     dataID=~isnan(dataVect);
     
-    if ~any(dataVect)
+    if ~any(dataVect) %
         if isfield(opts,'modelNames')
             outModelVect{iM,1}.mName = opts.modelNames{iM};
         else
@@ -106,7 +106,7 @@ for iM = 1:nModels
         if iO==1
             outModelVect{iM,1}=tmpModel; % save constant model
         elseif tmpModel.stats.bic < outModelVect{iM}.stats.bic-2
-            outModelVect{iM,1}=tmpModel; % keep higher order model if BIC decreases
+          outModelVect{iM,1}=tmpModel; % keep higher order model if BIC decreases
         else
             break; % if bic does not decrease sufficiently enough, stop increasing model order (not necessary to compute higher order models)
         end
@@ -159,8 +159,6 @@ for iM = 1:nModels
         end
     end
 end
-
 end
-
 
 

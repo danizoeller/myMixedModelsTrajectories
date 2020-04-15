@@ -26,7 +26,11 @@ inputDataFile='exampleData.xlsx'; % filename and path of excel file with input d
 
 col_subjID=1; % column number in excel file with subject information
 col_age=2; % column number with age
-col_grouping=3; % column you want to use for grouping (gender, diagnosis, ...)
+col_grouping=3; % column (with 0 and 1 values) you want to use for grouping: $
+                % col_grouping=[]; if you have only 1 group
+                % 1 column if you have 2 groups
+                % 2 colums if you have 3 groups (in the first column  you have 1 for everyone in the group 1 and 0 everywhere else,
+                % and in the second column you have 1 for everyone is in the group 2 and 0 everywhere else)             
 col_data=5:8; % columns with your data
 col_cov=4; % column with covariates, can contain multiple values or also be empty
 
@@ -94,3 +98,15 @@ outModelVect_corr = fdr_correct(outModelVect,opts.alpha);
 % -----------------------------
 plotOpts.nCov=size(input.cov,2);
 plotModelsAndSaveResults(outModelVect,plotOpts,saveResults,outDir);
+
+% -----------------------------
+% calculation of the size effect
+% -----------------------------
+% Reporting the effect size for the groups and for the interaction between groups and age
+
+effectSizeGroup=GroupCalculationEffect(outModelVect);
+%table reporting the group (if variable group is included) size effect for each model (each response variable)
+effectSizeInter=InterCalculationEffect(outModelVect);
+%table reporting the interaction (if variable interaction is included) size effect for each model (each response variable)
+
+

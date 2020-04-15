@@ -159,7 +159,3 @@ if plotOpts.plotting
         end
     end
 end
-
-
-
-
