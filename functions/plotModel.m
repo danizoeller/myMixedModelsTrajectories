@@ -34,9 +34,6 @@ function [fh,plottedModel] = plotModel(model,plotOpts,figurehandle)
 
 
 %%
-% model=outModelVect{iM};
-% plotOpts= plotOpts;
-% figurehandle=fig;
 %% set up defaults
 if nargin < 3 || isempty(figurehandle)
     fh=figure;
