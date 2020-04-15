@@ -62,10 +62,10 @@ else
 groups=size(grouping,2)+1;
 end
 
-if groups==2 && length(unique(grouping))~=2
+if groups==2 && ~isequal(unique(grouping),[0 1]')
     error('error occurred in the specification of the groups')
 end
-if groups==3 && (length(unique(grouping(:,1)))~=2 || length(unique(grouping(:,2)))~=2)
+if groups==3 && (~isequal(unique(grouping(:,1)),[0 1]') || ~isequal(unique(grouping(:,2)),[0 1]'))
     error('error occurred in the specification of the groups')
 end
 
