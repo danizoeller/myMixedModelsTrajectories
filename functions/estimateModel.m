@@ -68,6 +68,9 @@ end
 if groups==3 && (~isequal(unique(grouping(:,1)),[0 1]') || ~isequal(unique(grouping(:,2)),[0 1]'))
     error('error occurred in the specification of the groups')
 end
+if groups>3 
+    error('error: more than 3 groups have been found')
+end
 
 % first column of design matrix is a vector of ones
 designMatrix = ones(nObs, 1);
