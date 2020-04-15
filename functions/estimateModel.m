@@ -6,7 +6,7 @@ function outModel = estimateModel(subjID, grouping, age, cov, data, opts)
 % Inputs:
 %    subjID - vector of subject IDs (double, #sub x 1)
 %    age - vector of ages (double, #sub x 1)
-%    grouping - vector with grouping information (double/logical)
+%    grouping - vector with grouping information 
 %    cov - matrix of covariates (#sub < #cov), empty if no covariates
 %    data - vector with data to model (double, #sub x 1)
 %    opts - structure with options for model estimation
@@ -37,12 +37,6 @@ function outModel = estimateModel(subjID, grouping, age, cov, data, opts)
 % Developmental Imaging and Psychopathology Lab, UniGe
 % v1.0 3.8.2016 DZ - initial version based on initial code of Kadir Mutlu
 %%
-% subjID=input.subjID(dataID,:);
-% grouping=input.grouping(dataID,:);
-% age=input.age(dataID,:);
-% cov=input.cov(dataID,:);
-% data=dataVect(dataID,:);
-% opts=estOpts;
 
 %% set up defaults
 if ~isfield(opts,'groupEffect')
@@ -66,6 +60,13 @@ if size(grouping,2)==0
     groups=1;
 else
 groups=size(grouping,2)+1;
+end
+
+if groups==2 && length(unique(grouping))~=2
+    error('error occurred in the specification of the groups')
+end
+if groups==3 && (length(unique(grouping(:,1)))~=2 || length(unique(grouping(:,2)))~=2)
+    error('error occurred in the specification of the groups')
 end
 
 % first column of design matrix is a vector of ones
