@@ -6,7 +6,7 @@ function outModel = estimateModel(subjID, grouping, age, cov, data, opts)
 % Inputs:
 %    subjID - vector of subject IDs (double, #sub x 1)
 %    age - vector of ages (double, #sub x 1)
-%    grouping - vector with grouping information 
+%    grouping - 1 vector (if 2 groups) or 2 vectors (if 3 groups) with grouping information 
 %    cov - matrix of covariates (#sub < #cov), empty if no covariates
 %    data - vector with data to model (double, #sub x 1)
 %    opts - structure with options for model estimation
