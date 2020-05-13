@@ -6,7 +6,7 @@ if isfield(outModelVect{iM,1}, 'interEffect')
     effectSizeInter=table(iM, outModelVect{1,1}.interEffect.Chi2, outModelVect{1,1}.interEffect.dof_diff, outModelVect{1,1}.interEffect.p);
     effectSizeInter.Properties.VariableNames={'Number of model','Chi square statistics','Degree of fredoom','p-value'};
     else 
-    effectSizeInterAdd=table(iM, outModelVect{1,1}.interEffect.Chi2, outModelVect{1,1}.interEffect.dof_diff, outModelVect{1,1}.interEffect.p);
+    effectSizeInterAdd=table(iM, outModelVect{iM,1}.interEffect.Chi2, outModelVect{iM,1}.interEffect.dof_diff, outModelVect{iM,1}.interEffect.p);
     effectSizeInterAdd.Properties.VariableNames={'Number of model','Chi square statistics','Degree of fredoom','p-value'};
     effectSizeInter=[effectSizeInter;effectSizeInterAdd];
     end
